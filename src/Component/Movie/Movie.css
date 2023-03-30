@@ -1,5 +1,21 @@
+.movie {
+    width: 300px;
+    height: 520px;
+    border: 1px solid #95A0A7;
+    border-radius: 8px;
+    position: relative;
+
+}
+
 
 .movie img {
     width: 284px;
     height: 300px;
+    border-radius: 8px;
+    margin: 8px;
+}
+
+.btn-add {
+    position: absolute;
+    bottom: 0px;
 }

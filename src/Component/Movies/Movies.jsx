@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import Cart from '../Cart/Cart';
 import Movie from '../Movie/Movie';
 import './movies.css'
 
 
 const Movies = () => {
     const [movies, setMovies] = useState([])
+    const [cart, setCart] = useState([])
     useEffect(() => {
-        fetch("products.json")
+        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => setMovies(data))
     }, [])
-    return (
-        <div className='main row'>
-            <div className='movies col-md-8 '>
 
+    const handleAddToCart = (movie) => {
+        const newCart = [...cart, movie]
+        console.log(newCart)
+        setCart(newCart)
+    }
+    return (
+        <div className='shoes-container'>
+            <div className='movies-container'>
                 {
-                    movies.map(movie => <Movie movie={movie}></Movie>)
+                    movies.map(movie => <Movie
+                        key={movie.id}
+                        movie={movie}
+                        handleAddToCart={handleAddToCart}
+                    ></Movie>)
                 }
-            </div>
-            <div className='cart col-md-4'>
-                <h2>This is cart container</h2>
             </div>
         </div>
     );
